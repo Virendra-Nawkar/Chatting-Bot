@@ -31,9 +31,13 @@ async function runCompletion(message) {
 
 client.on('message', message => {
     console.log(message.body);
+    if (message.body.toLocaleLowerCase() == "who created you"){
+        message.reply("virendra nawkar");
+    }
     runCompletion(message.body).then(result => {
         console.log(result); if (result.length == 0) {
             console.log("result length is zero sending dummy message"); message.reply("nothing found"); return;
-        } message.reply(result)
+        } message.reply(result);
+        return;
     });
 })
